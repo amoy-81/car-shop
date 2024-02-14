@@ -8,6 +8,7 @@ import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import MenuIcon from "@mui/icons-material/Menu";
 import RTL from "@/mui/RTL";
+import Link from "next/link";
 
 function HambergerMenu() {
   const [open, setOpen] = React.useState(false);
@@ -43,10 +44,18 @@ function HambergerMenu() {
               flexGrow: 1,
             }}
           ></Box>
-          <MenuItem>خانه</MenuItem>
-          <MenuItem>جدید</MenuItem>
-          <MenuItem>محصولات</MenuItem>
-          <MenuItem>درباره ما</MenuItem>
+          <Link href={"/"} passHref>
+            <MenuItem>خانه</MenuItem>
+          </Link>
+          <Link href={"/#new-products"} passHref>
+            <MenuItem>جدید</MenuItem>
+          </Link>
+          <Link href={"/products"} passHref>
+            <MenuItem>محصولات</MenuItem>
+          </Link>
+          <Link href={"/about"} passHref>
+            <MenuItem>درباره ما</MenuItem>
+          </Link>
           <Divider />
           <MenuItem>
             <Button

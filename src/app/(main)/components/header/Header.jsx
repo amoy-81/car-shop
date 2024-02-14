@@ -54,7 +54,7 @@ function Header() {
                 </Link>
               </MenuItem>
               <MenuItem sx={{ py: "6px", px: "12px" }}>
-                <Link href={"#new-products"}>
+                <Link href={"/#new-products"}>
                   <Typography
                     variant="h7"
                     color="text.primary"
