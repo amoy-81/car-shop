@@ -5,7 +5,6 @@ import DropDown from "./components/DropDown";
 function About() {
   return (
     <Container
-      id="faq"
       sx={{
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },

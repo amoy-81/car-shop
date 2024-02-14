@@ -26,7 +26,7 @@ export function CardComponent({ id, name, description, image }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Link href={`/product/${id}`}>
+        <Link href={`/products/${id}`}>
           <Button size="small" color="primary">
             بیشتر
           </Button>
