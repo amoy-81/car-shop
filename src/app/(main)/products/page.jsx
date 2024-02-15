@@ -16,7 +16,7 @@ async function ProductsPage() {
         textAlign={"center"}
         marginY={4}
       >
-        محصولات جدید
+        محصولات نمایشگاه
       </Typography>
       <Container maxWidth={"lg"}>
         <Grid container xs={12}>

@@ -7,7 +7,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import MenuIcon from "@mui/icons-material/Menu";
-import RTL from "@/mui/RTL";
 import Link from "next/link";
 
 function HambergerMenu() {

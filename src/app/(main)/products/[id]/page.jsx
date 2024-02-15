@@ -2,6 +2,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import BackButton from "./components/BackButton";
 import Image from "next/image";
 import { priceSeparator } from "@/helpers/separator";
+import CommentSection from "./components/CommentSection";
 
 const getProduct = async (id) => {
   const res = await fetch(`${process.env.LOCAL_API_URL}/product/${id}`);
@@ -75,9 +76,11 @@ async function Product({ params }) {
         display={"flex"}
         justifyContent={"center"}
         padding={4}
+        gap={2}
       >
         <Button variant="contained">سفارش</Button>
       </Box>
+      <CommentSection />
     </Container>
   );
 }
