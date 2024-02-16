@@ -1,6 +1,4 @@
 "use client";
-import * as React from "react";
-
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,12 +6,27 @@ import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
+import { whoAmI } from "@/app/actions";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 function HambergerMenu() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const pathname = usePathname();
+
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
+
+  const getUserDatas = async () => {
+    const userRes = await whoAmI();
+    setUser(userRes);
+  };
+
+  useEffect(() => {
+    getUserDatas();
+  }, [pathname]);
 
   return (
     <Box sx={{ display: { sm: "", md: "none" } }}>
@@ -55,31 +68,40 @@ function HambergerMenu() {
           <Link href={"/about"} passHref>
             <MenuItem>درباره ما</MenuItem>
           </Link>
-          <Divider />
-          <MenuItem>
-            <Button
-              color="primary"
-              variant="contained"
-              component="a"
-              href="/material-ui/getting-started/templates/sign-up/"
-              target="_blank"
-              sx={{ width: "100%" }}
-            >
-              ثبت نام
-            </Button>
-          </MenuItem>
-          <MenuItem>
-            <Button
-              color="primary"
-              variant="outlined"
-              component="a"
-              href="/material-ui/getting-started/templates/sign-in/"
-              target="_blank"
-              sx={{ width: "100%" }}
-            >
-              ورود
-            </Button>
-          </MenuItem>
+          <Divider sx={{ margin: 1 }} />
+
+          {user && (
+            <Link href={"/orders"} passHref>
+              <MenuItem>سفارش ها</MenuItem>
+            </Link>
+          )}
+
+          {!user && (
+            <div className=" w-full">
+              <MenuItem>
+                <Link href={"/register"} passHref className=" w-full">
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    sx={{ width: "100%" }}
+                  >
+                    ثبت نام
+                  </Button>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href={"/login"} passHref className=" w-full">
+                  <Button
+                    color="primary"
+                    variant="outlined"
+                    sx={{ width: "100%" }}
+                  >
+                    ورود
+                  </Button>
+                </Link>
+              </MenuItem>
+            </div>
+          )}
         </Box>
       </Drawer>
     </Box>

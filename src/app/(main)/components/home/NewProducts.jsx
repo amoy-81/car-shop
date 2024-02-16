@@ -19,7 +19,7 @@ async function NewProducts() {
         محصولات جدید
       </Typography>
       <Container maxWidth={"lg"}>
-        <Grid container xs={12}>
+        <Grid container>
           {newProducts?.map((product) => (
             <Grid
               item

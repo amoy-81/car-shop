@@ -56,12 +56,7 @@ function Introduction() {
               id="outlined-basic"
               size="small"
               variant="outlined"
-              aria-label="Enter your email address"
               placeholder="نام خودرو"
-              inputProps={{
-                autocomplete: "off",
-                ariaLabel: "Enter your email address",
-              }}
             />
             <Button variant="contained" color="primary">
               جست وجو

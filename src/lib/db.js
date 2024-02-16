@@ -1,7 +1,6 @@
 import mysql from "mysql2/promise";
 
 export async function query({ query, values = [] }) {
-
   const dbconnection = await mysql.createConnection({
     host: process.env.MYSQL_HOST,
     post: process.env.MYSQL_PORT,
@@ -15,7 +14,6 @@ export async function query({ query, values = [] }) {
     dbconnection.end();
     return results;
   } catch (error) {
-    throw Error(error.message);
-    return { error };
+    return [{ message: error.message, success: false }];
   }
 }

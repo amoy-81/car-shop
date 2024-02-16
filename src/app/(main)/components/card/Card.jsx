@@ -14,6 +14,7 @@ export function CardComponent({ id, name, description, image }) {
           className=" w-full h-64"
           width={140}
           height={100}
+          priority={true}
           alt="new car"
         />
         <CardContent>

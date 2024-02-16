@@ -7,8 +7,10 @@ import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import HambergerMenu from "./HambergerMenu";
 import Link from "next/link";
+import { whoAmI } from "@/app/actions";
 
-function Header() {
+async function Header() {
+  const user = await whoAmI();
   return (
     <div>
       <AppBar
@@ -53,17 +55,32 @@ function Header() {
                   </Typography>
                 </Link>
               </MenuItem>
-              <MenuItem sx={{ py: "6px", px: "12px" }}>
-                <Link href={"/#new-products"}>
-                  <Typography
-                    variant="h7"
-                    color="text.primary"
-                    fontWeight={500}
-                  >
-                    جدید
-                  </Typography>
-                </Link>
-              </MenuItem>
+              {!user ? (
+                <MenuItem sx={{ py: "6px", px: "12px" }}>
+                  <Link href={"/#new-products"}>
+                    <Typography
+                      variant="h7"
+                      color="text.primary"
+                      fontWeight={500}
+                    >
+                      جدید
+                    </Typography>
+                  </Link>
+                </MenuItem>
+              ) : (
+                <MenuItem sx={{ py: "6px", px: "12px" }}>
+                  <Link href={"/orders"}>
+                    <Typography
+                      variant="h7"
+                      color="text.primary"
+                      fontWeight={500}
+                    >
+                      سفارش ها
+                    </Typography>
+                  </Link>
+                </MenuItem>
+              )}
+
               <MenuItem sx={{ py: "6px", px: "12px" }}>
                 <Link href={"/products"}>
                   <Typography
@@ -87,30 +104,49 @@ function Header() {
                 </Link>
               </MenuItem>
             </Box>
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                gap: 0.5,
-                alignItems: "center",
-              }}
-            >
-              <Button
-                color="primary"
-                variant="text"
-                size="small"
-                component="button"
+
+            {user && (
+              <Typography
+                variant="h7"
+                component={"h3"}
+                fontWeight={600}
+                color="text.primary"
+                sx={{ display: { xs: "none", md: "flex" } }}
               >
-                ورود
-              </Button>
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                component="button"
+                کاربر گرامی {user?.name}
+              </Typography>
+            )}
+
+            {!user && (
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  gap: 0.5,
+                  alignItems: "center",
+                }}
               >
-                ثبت نام
-              </Button>
-            </Box>
+                <Link href={"/login"} passHref>
+                  <Button
+                    color="primary"
+                    variant="text"
+                    size="small"
+                    component="button"
+                  >
+                    ورود
+                  </Button>
+                </Link>
+                <Link href={"/register"} passHref>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    size="small"
+                    component="button"
+                  >
+                    ثبت نام
+                  </Button>
+                </Link>
+              </Box>
+            )}
             <HambergerMenu />
           </Toolbar>
         </Container>
