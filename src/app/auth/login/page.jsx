@@ -1,8 +1,8 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import RegisterForm from "../components/RegisterForm";
 import Link from "next/link";
+import LoginForm from "../components/LoginForm";
 
-function RegisterPage() {
+function LoginPage() {
   return (
     <div className=" flex justify-center items-center h-screen">
       <Container
@@ -25,7 +25,7 @@ function RegisterPage() {
           }}
         >
           <Typography component="h1" variant="h5">
-            ثبت نام
+            ورود
           </Typography>
           <Typography
             variant="p"
@@ -36,11 +36,11 @@ function RegisterPage() {
             لطفا اطلاعات را با دقت تکمیل نمایید
           </Typography>
           <Box sx={{ mt: 1 }}>
-            <RegisterForm />
+            <LoginForm />
             <Grid container>
               <Grid item>
-                <Link href="/login" className=" text-[#2196f3]">
-                  حساب کاربری دارید؟
+                <Link href="/auth/register" className=" text-[#2196f3]">
+                  حساب کاربری ندارید؟
                 </Link>
               </Grid>
             </Grid>
@@ -51,4 +51,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default LoginPage;

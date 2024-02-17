@@ -125,7 +125,7 @@ async function Header() {
                   alignItems: "center",
                 }}
               >
-                <Link href={"/login"} passHref>
+                <Link href={"/auth/login"} passHref>
                   <Button
                     color="primary"
                     variant="text"
@@ -135,7 +135,7 @@ async function Header() {
                     ورود
                   </Button>
                 </Link>
-                <Link href={"/register"} passHref>
+                <Link href={"/auth/register"} passHref>
                   <Button
                     color="primary"
                     variant="contained"

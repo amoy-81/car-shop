@@ -79,7 +79,7 @@ function HambergerMenu() {
           {!user && (
             <div className=" w-full">
               <MenuItem>
-                <Link href={"/register"} passHref className=" w-full">
+                <Link href={`/auth/register?backUrl=${pathname}`} passHref className=" w-full">
                   <Button
                     color="primary"
                     variant="contained"
@@ -90,7 +90,7 @@ function HambergerMenu() {
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link href={"/login"} passHref className=" w-full">
+                <Link href={`/auth/login?backUrl=${pathname}`} passHref className=" w-full">
                   <Button
                     color="primary"
                     variant="outlined"
