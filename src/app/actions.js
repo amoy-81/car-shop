@@ -53,3 +53,10 @@ export async function newComment(carId, comment) {
     return { success: false, message: "خطا در برقراری ارتباط" };
   }
 }
+
+export const getCookies = async (key) => {
+  const cookiesStore = cookies();
+  const cookie = cookiesStore.get(key);
+
+  return cookie;
+};
