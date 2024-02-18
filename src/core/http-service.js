@@ -7,8 +7,8 @@ const httpService = axios.create({
 
 // for access token
 httpService.interceptors.request.use(
-  (req) => {
-    const accessToken = getCookies("accessToken");
+  async (req) => {
+    const accessToken = await getCookies("accessToken");
     // add token to headers
     if (accessToken) {
       req.headers["Authorization"] = `${accessToken.value}`;
