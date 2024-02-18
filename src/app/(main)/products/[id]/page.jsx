@@ -3,6 +3,7 @@ import BackButton from "./components/BackButton";
 import Image from "next/image";
 import { priceSeparator } from "@/helpers/separator";
 import CommentSection from "./components/CommentSection";
+import RecordOrder from "./components/RecordOrder";
 
 const getProduct = async (id) => {
   const res = await fetch(`${process.env.LOCAL_API_URL}/product/${id}`);
@@ -35,6 +36,7 @@ async function Product({ params }) {
           src={productValues[0].image}
           width={1000}
           height={400}
+          priority={true}
           alt={productValues[0].name}
           className=" rounded-lg"
         />
@@ -71,15 +73,7 @@ async function Product({ params }) {
           </Typography>
         </Box>
       </Box>
-      <Box
-        sx={{ width: "100%" }}
-        display={"flex"}
-        justifyContent={"center"}
-        padding={4}
-        gap={2}
-      >
-        <Button variant="contained">سفارش</Button>
-      </Box>
+      <RecordOrder />
       <CommentSection />
     </Container>
   );
