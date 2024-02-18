@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { ArrowBackIos } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useRouter } from "next/navigation";

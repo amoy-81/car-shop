@@ -28,7 +28,7 @@ function RecordOrder() {
     if (error) {
       setFormStatus({
         status: "error",
-        message: response?.message || "خطا رخ داده",
+        message: error?.message || "خطا رخ داده",
       });
     }
   }, [response, error]);

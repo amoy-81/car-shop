@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import HambergerMenu from "./HambergerMenu";
 import Link from "next/link";
 import { whoAmI } from "@/app/actions";
+import LoginAndRegisterButtons from "./LoginAndRegisterButtons";
 
 async function Header() {
   const user = await whoAmI();
@@ -117,36 +118,7 @@ async function Header() {
               </Typography>
             )}
 
-            {!user && (
-              <Box
-                sx={{
-                  display: { xs: "none", md: "flex" },
-                  gap: 0.5,
-                  alignItems: "center",
-                }}
-              >
-                <Link href={"/auth/login"} passHref>
-                  <Button
-                    color="primary"
-                    variant="text"
-                    size="small"
-                    component="button"
-                  >
-                    ورود
-                  </Button>
-                </Link>
-                <Link href={"/auth/register"} passHref>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    size="small"
-                    component="button"
-                  >
-                    ثبت نام
-                  </Button>
-                </Link>
-              </Box>
-            )}
+            {!user && <LoginAndRegisterButtons />}
             <HambergerMenu />
           </Toolbar>
         </Container>

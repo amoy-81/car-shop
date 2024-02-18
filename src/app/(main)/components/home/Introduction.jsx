@@ -4,6 +4,7 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import SearchBox from "./SearchBox";
 
 function Introduction() {
   return (
@@ -45,23 +46,7 @@ function Introduction() {
             کارشناسان ما بهترین خودروی مورد نیاز شما را بر مبنای کیفیت و سلیقه
             مورد نظر معرفی می نمایند.
           </Typography>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            alignSelf="center"
-            spacing={1}
-            useFlexGap
-            sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}
-          >
-            <TextField
-              id="outlined-basic"
-              size="small"
-              variant="outlined"
-              placeholder="نام خودرو"
-            />
-            <Button variant="contained" color="primary">
-              جست وجو
-            </Button>
-          </Stack>
+          <SearchBox />
         </Stack>
       </Container>
     </Box>
